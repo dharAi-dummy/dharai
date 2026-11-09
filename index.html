@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dharAi — Where imagination becomes art</title>
+<meta name="description" content="Create beautiful AI art with dharAi. No login required.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#090909;color:#f8f5ef;
+  font-family:Arial,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font:inherit}
+nav{
+  position:fixed;top:0;width:100%;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 7%;background:#090909df;
+  backdrop-filter:blur(15px);
+}
+.logo{font-size:27px;font-weight:800;letter-spacing:-1px}
+.logo span{color:#d8ad70}
+.navlinks{display:flex;gap:25px;font-size:13px;color:#ccc}
+.navlinks a:hover{color:#d8ad70}
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:130px 9% 80px;
+  background:linear-gradient(90deg,#090909 5%,#090909b9 55%,#09090930),
+  url('https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1800')
+  center/cover;
+}
+.hero-content{max-width:700px}
+.eyebrow{color:#d8ad70;letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(48px,8vw,100px);line-height:1.02;margin:25px 0}
+.hero p{font-size:18px;color:#ccc;line-height:1.7}
+.gold{
+  display:inline-block;background:#d8ad70;color:#111;
+  padding:15px 27px;border:0;border-radius:3px;
+  font-weight:bold;margin-top:30px;
+}
+.gold:hover{background:#f1d09e}
+section{padding:100px 8%}
+.heading{text-align:center;margin-bottom:45px}
+.heading small{color:#d8ad70;letter-spacing:3px}
+.heading h2{font-size:clamp(32px,5vw,50px);margin-top:12px}
+.heading p{color:#aaa;margin-top:12px;line-height:1.6}
+#create{background:#12110f}
+.creator{
+  max-width:800px;margin:auto;padding:35px;
+  background:#1b1916;border:1px solid #51412e;
+  border-radius:12px;
+}
+label{display:block;margin:20px 0 10px;color:#ddd}
+textarea,select,input{
+  width:100%;padding:15px;background:#0d0d0d;
+  color:white;border:1px solid #514b40;border-radius:5px;
+  font:inherit;
+}
+textarea{min-height:125px;resize:vertical}
+.creator .gold{width:100%}
+#status{text-align:center;margin-top:18px;color:#d8ad70}
+#generated{width:100%;margin-top:20px;border-radius:8px}
+.filters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.filter{
+  background:transparent;color:white;border:1px solid #555;
+  padding:10px 19px;border-radius:30px
+}
+.filter.active,.filter:hover{background:#d8ad70;color:#111;border-color:#d8ad70}
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+}
+.art{
+  position:relative;overflow:hidden;height:310px;
+  border-radius:6px;background:#222;cursor:pointer
+}
+.art img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.art:hover img{transform:scale(1.07)}
+.art span{
+  position:absolute;bottom:0;left:0;width:100%;
+  padding:20px;background:linear-gradient(transparent,#000d);
+  font-size:18px
+}
+#lightbox{
+  display:none;position:fixed;inset:0;z-index:30;
+  background:#000f;align-items:center;justify-content:center;
+  padding:25px;
+}
+#lightbox img{max-width:95%;max-height:85vh;object-fit:contain}
+#lightbox button{
+  position:absolute;top:25px;right:35px;
+  background:none;color:white;border:0;font-size:35px
+}
+.about{
+  background:#111;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:55px
+}
+.about img{width:100%;border-radius:7px}
+.about p{color:#aaa;line-height:1.9;margin-top:18px}
+.contact{text-align:center}
+.contact a{color:#d8ad70}
+footer{
+  text-align:center;padding:30px;color:#888;
+  border-top:1px solid #292929;font-size:13px
+}
+@media(max-width:750px){
+  .navlinks{gap:12px;font-size:11px}
+  nav{padding:17px 4%}
+  .logo{font-size:22px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .art{height:230px}
+  .about{grid-template-columns:1fr}
+  section{padding:75px 5%}
+  .creator{padding:20px}
+}
+@media(max-width:430px){
+  .navlinks{gap:8px;font-size:10px}
+  .gallery{grid-template-columns:1fr}
+  .art{height:280px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#home">dhar<span>Ai</span></a>
+  <div class="navlinks">
+    <a href="#home">Home</a>
+    <a href="#create">Create</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#collections">Collections</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">THE WORLD OF DIGITAL CREATIVITY</div>
+    <h1>Where imagination becomes art.</h1>
+    <p>
+      Discover a new dimension of creativity.
+      Turn your imagination into extraordinary
+      visual experiences with dharAi.
+    </p>
+    <a href="#create" class="gold">Create Your Art →</a>
+  </div>
+</header>
+
+<section id="create">
+  <div class="heading">
+    <small>YOUR IMAGINATION, OUR CANVAS</small>
+    <h2>Create AI Art</h2>
+    <p>No login. No registration. Just your imagination.</p>
+  </div>
+
+  <div class="creator">
+    <label for="prompt">Describe your imagination</label>
+    <textarea id="prompt"
+      placeholder="A cinematic fashion portrait, golden lighting, luxury editorial photography..."></textarea>
+
+    <label for="style">Choose an art collection</label>
+    <select id="style">
+      <option>Fashion</option>
+      <option>Portraits</option>
+      <option>Fine Art</option>
+      <option>Nature</option>
+    </select>
+
+    <label for="ratio">Image format</label>
+    <select id="ratio">
+      <option value="1:1">Square</option>
+      <option value="3:4">Portrait</option>
+      <option value="16:9">Landscape</option>
+    </select>
+
+    <button class="gold" id="generate" onclick="generateArt()">
+      ✨ Generate My Artwork
+    </button>
+    <div id="status" role="status"></div>
+    <img id="generated" hidden alt="Your generated AI artwork">
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="heading">
+    <small>THE ART EXPERIENCE</small>
+    <h2>Selected Gallery</h2>
+    <p>Explore a world beyond imagination.</p>
+  </div>
+  <div class="gallery" id="galleryGrid"></div>
+</section>
+
+<section id="collections">
+  <div class="heading">
+    <small>EXPLORE YOUR WORLD</small>
+    <h2>Collections</h2>
+  </div>
+  <div class="filters">
+    <button class="filter active" onclick="filterArt('All',this)">All</button>
+    <button class="filter" onclick="filterArt('Fashion',this)">Fashion</button>
+    <button class="filter" onclick="filterArt('Portraits',this)">Portraits</button>
+    <button class="filter" onclick="filterArt('Fine Art',this)">Fine Art</button>
+    <button class="filter" onclick="filterArt('Nature',this)">Nature</button>
+  </div>
+  <div class="gallery" id="collectionGrid"></div>
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <button aria-label="Close image">&times;</button>
+  <img id="largeImage" alt="Enlarged artwork">
+</div>
+
+<section class="about" id="about">
+  <div>
+    <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=900"
+      alt="Artistic landscape">
+  </div>
+  <div>
+    <div class="eyebrow">OUR CREATIVE VISION</div>
+    <h2 style="font-size:45px;margin-top:18px">Art has no boundaries.</h2>
+    <p>
+      dharAi is a creative space where technology meets
+      imagination. We believe every idea deserves to become
+      something beautiful.
+    </p>
+    <p>
+      From cinematic portraits to surreal landscapes,
+      our vision is to make digital creativity accessible
+      to everyone.
+    </p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="heading">
+    <small>LET'S CONNECT</small>
+    <h2>Have an idea?</h2>
+    <p>Let's create something extraordinary together.</p>
+  </div>
+  <a class="gold" href="mailto:hello@yourdomain.com">Contact Us →</a>
+</section>
+
+<footer>
+  © 2026 dharAi. Where imagination becomes art.
+</footer>
+
+<script>
+const artworks = [
+ {name:"Golden Fashion",cat:"Fashion",url:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900"},
+ {name:"Modern Portrait",cat:"Portraits",url:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900"},
+ {name:"Dreamscape",cat:"Fine Art",url:"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=900"},
+ {name:"Wild Nature",cat:"Nature",url:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=900"},
+ {name:"Fashion Editorial",cat:"Fashion",url:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900"},
+ {name:"Artistic Beauty",cat:"Portraits",url:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=900"},
+ {name:"Abstract Vision",cat:"Fine Art",url:"https://images.unsplash.com/photo-1549490349-8643362247b5?w=900"},
+ {name:"Mountain Dreams",cat:"Nature",url:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900"}
+];
+
+function card(item){
+ return `<div class="art" onclick="openLightbox('${item.url}')">
+ <img src="${item.url}" alt="${item.name}" loading="lazy">
+ <span>${item.name}</span></div>`;
+}
+
+function renderGallery(){
+ document.getElementById("galleryGrid").innerHTML=artworks.map(card).join("");
+ document.getElementById("collectionGrid").innerHTML=artworks.map(card).join("");
+}
+function filterArt(category,button){
+ document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ const filtered=category==="All"?artworks:artworks.filter(a=>a.cat===category);
+ document.getElementById("collectionGrid").innerHTML=filtered.map(card).join("");
+}
+function openLightbox(url){
+ document.getElementById("largeImage").src=url;
+ document.getElementById("lightbox").style.display="flex";
+}
+function closeLightbox(){
+ document.getElementById("lightbox").style.display="none";
+}
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeLightbox();
+});
+renderGallery();
+
+async function generateArt(){
+ const prompt=document.getElementById("prompt").value.trim();
+ const style=document.getElementById("style").value;
+ const ratio=document.getElementById("ratio").value;
+ const button=document.getElementById("generate");
+ const status=document.getElementById("status");
+ const result=document.getElementById("generated");
+
+ if(!prompt){
+   status.textContent="Please describe your artwork first.";
+   return;
+ }
+
+ button.disabled=true;
+ button.textContent="Creating your masterpiece...";
+ status.textContent="Your imagination is coming to life. Please wait...";
+ result.hidden=true;
+
+ const controller=new AbortController();
+ const timeout=setTimeout(()=>controller.abort(),60000);
+
+ try{
+   const response=await fetch("/api/generate",{
+     method:"POST",
+     headers:{"Content-Type":"application/json"},
+     body:JSON.stringify({prompt,style,ratio}),
+     signal:controller.signal
+   });
+
+   if(!response.ok)throw new Error("Generation service unavailable.");
+
+   const data=await response.json();
+   if(!data.imageUrl)throw new Error("No image was returned.");
+
+   result.src=data.imageUrl;
+   result.hidden=false;
+   status.textContent="Your artwork is ready! ✨";
+ }catch(error){
+   status.textContent=error.name==="AbortError"
+     ?"Generation timed out. Please try again."
+     :"AI service is not connected yet. Configure your secure generation backend.";
+ }finally{
+   clearTimeout(timeout);
+   button.disabled=false;
+   button.textContent="✨ Generate My Artwork";
+ }
+}
+</script>
+</body>
+</html>
